@@ -1,0 +1,42 @@
+{
+	"name": "sietch",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "pnpm i18n:generate && tsc && vite build",
+		"i18n:generate": "typesafe-i18n --no-watch",
+		"i18n:watch": "typesafe-i18n",
+		"preview": "vite preview",
+		"tauri": "tauri",
+		"check": "biome check .",
+		"check:fix": "biome check --fix .",
+		"format": "biome format --fix ."
+	},
+	"dependencies": {
+		"@tauri-apps/api": "^2",
+		"@tauri-apps/plugin-opener": "^2",
+		"@tauri-apps/plugin-os": "^2",
+		"@tauri-apps/plugin-store": "^2.4.2",
+		"@tiptap/core": "^3.20.0",
+		"@tiptap/extension-character-count": "^3.20.0",
+		"@tiptap/extension-placeholder": "^3.20.0",
+		"@tiptap/extension-typography": "^3.20.0",
+		"@tiptap/pm": "^3.20.0",
+		"@tiptap/starter-kit": "^3.20.0",
+		"date-fns": "^4.1.0",
+		"fuse.js": "^7.1.0",
+		"hotkeys-js": "^4.0.0",
+		"marked": "^17.0.3",
+		"sortablejs": "^1.15.7",
+		"split-grid": "^1.0.11"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.3",
+		"@tauri-apps/cli": "^2",
+		"typesafe-i18n": "^5",
+		"typescript": "~5.6.2",
+		"vite": "^6.0.3"
+	}
+}

@@ -1,0 +1,176 @@
+/* ── Sietch Design Tokens ─────────────────────────────────
+   Single source of truth for colors, typography, and base styles.
+   Import this file first; all other CSS references these vars.
+   ───────────────────────────────────────────────────────── */
+
+/* ── Reset ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* ── Light Theme Tokens (default) ─────────────────────── */
+:root {
+	/* Sand & Stone palette — Arrakis inspired */
+	--sand-50: #fefdfb;
+	--sand-100: #faf8f4;
+	--sand-200: #f0ece4;
+	--sand-300: #e2dcd0;
+	--sand-400: #c4bba8;
+	--sand-500: #a69e8c;
+	--sand-600: #7d7566;
+	--sand-700: #5c5546;
+	--sand-800: #3d382e;
+	--sand-900: #1e1c17;
+
+	/* Accent colors */
+	--spice: #c17817;
+	--spice-glow: #e8a84c;
+	--water: #4a8fa8;
+
+	/* Typography */
+	--font-display: "Cormorant Garamond", Georgia, serif;
+	--font-ui: "DM Sans", -apple-system, sans-serif;
+	--font-mono: "JetBrains Mono", monospace;
+}
+
+/* ── Dark Theme Tokens ────────────────────────────────── */
+.dark {
+	--sand-50: #1a1814;
+	--sand-100: #21201b;
+	--sand-200: #2e2c25;
+	--sand-300: #3d3a31;
+	--sand-400: #5c5646;
+	--sand-500: #7d7566;
+	--sand-600: #a69e8c;
+	--sand-700: #c4bba8;
+	--sand-800: #e2dcd0;
+	--sand-900: #faf8f4;
+	--spice: #e8a84c;
+}
+
+/* ── Base ─────────────────────────────────────────────── */
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+	font-family: var(--font-ui);
+	background: var(--sand-100);
+	color: var(--sand-900);
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbars ───────────────────────────────────────── */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--sand-300);
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--sand-400);
+}
+
+/* ── Shared Components ────────────────────────────────── */
+
+/* Icon button — used across sidebar, toolbar, etc. */
+.btn-icon {
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	border: none;
+	color: var(--sand-400);
+	cursor: pointer;
+	border-radius: 4px;
+	font-size: 16px;
+	transition: all 0.15s;
+}
+
+.btn-icon:hover {
+	color: var(--sand-700);
+	background: var(--sand-200);
+}
+
+/* Section headings — used in sidebar, inspector, etc. */
+.section-label {
+	font-family: var(--font-ui);
+	font-size: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--sand-400);
+}
+
+/* Panel dividers — resizable column separators */
+.divider {
+	background: var(--sand-200);
+	cursor: col-resize;
+	position: relative;
+	transition: background 0.2s;
+}
+
+.divider::after {
+	content: "";
+	position: absolute;
+	inset: 0 -3px;
+}
+
+.divider:hover {
+	background: var(--spice);
+}
+
+/* Active resize state — disables transition so split-grid drag is instant */
+.app.is-resizing {
+	transition: none;
+}
+
+.app.is-resizing .divider {
+	background: var(--spice);
+}
+
+/* ── Animations ───────────────────────────────────────── */
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-8px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}

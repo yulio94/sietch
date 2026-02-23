@@ -1,0 +1,43 @@
+.statusbar {
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
+	background: var(--sand-50);
+	border-top: 1px solid var(--sand-200);
+	flex-shrink: 0;
+}
+
+.left,
+.right {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.statText {
+	font-size: 11px;
+	color: var(--sand-400);
+	font-variant-numeric: tabular-nums;
+}
+
+.progressTrack {
+	width: 80px;
+	height: 2px;
+	background: var(--sand-200);
+	border-radius: 1px;
+	overflow: hidden;
+}
+
+.progressFill {
+	height: 100%;
+	background: var(--spice);
+	border-radius: 1px;
+	transition: width 0.5s ease;
+}
+
+.goalText {
+	font-size: 10px;
+	color: var(--sand-400);
+}

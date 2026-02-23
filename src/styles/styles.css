@@ -1,0 +1,21 @@
+@import "./theme.css";
+
+/* ── App Layout ───────────────────────────────────────── */
+.app {
+	display: grid;
+	grid-template-columns: 240px 1px 1fr 1px 260px;
+	height: 100vh;
+	transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app.sidebar-closed {
+	grid-template-columns: 0px 0px 1fr 1px 260px;
+}
+
+.app.inspector-closed {
+	grid-template-columns: 240px 1px 1fr 0px 0px;
+}
+
+.app.both-closed {
+	grid-template-columns: 0px 0px 1fr 0px 0px;
+}

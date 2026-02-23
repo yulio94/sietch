@@ -1,0 +1,6 @@
+{
+	"baseLocale": "en",
+	"outputPath": "src/i18n/",
+	"outputFormat": "TypeScript",
+	"esmImports": true
+}

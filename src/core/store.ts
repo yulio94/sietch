@@ -1,0 +1,59 @@
+import type { StoreState } from "../types";
+
+type Listener<T> = (value: T) => void;
+
+const defaultState: StoreState = {
+	documents: [],
+	activeDoc: null,
+	stats: { words: 0, characters: 0, paragraphs: 0, readingTime: "0 min" },
+	outline: [],
+	theme: "light",
+	sidebarOpen: true,
+	inspectorOpen: true,
+	focusMode: false,
+	dailyGoal: 1000,
+	locale: "en",
+};
+
+class Store {
+	private state: StoreState;
+	private listeners = new Map<string, Set<Listener<unknown>>>();
+
+	constructor() {
+		this.state = { ...defaultState };
+	}
+
+	get<K extends keyof StoreState>(key: K): StoreState[K] {
+		return this.state[key];
+	}
+
+	set<K extends keyof StoreState>(key: K, value: StoreState[K]): void {
+		this.state[key] = value;
+		this.notify(key);
+	}
+
+	on<K extends keyof StoreState>(
+		key: K,
+		callback: Listener<StoreState[K]>,
+	): () => void {
+		if (!this.listeners.has(key)) {
+			this.listeners.set(key, new Set());
+		}
+		const set = this.listeners.get(key);
+		if (!set) return () => {};
+		set.add(callback as Listener<unknown>);
+		return () => set.delete(callback as Listener<unknown>);
+	}
+
+	private notify<K extends keyof StoreState>(key: K): void {
+		const set = this.listeners.get(key);
+		if (set) {
+			const value = this.state[key];
+			for (const cb of set) {
+				cb(value);
+			}
+		}
+	}
+}
+
+export const store = new Store();

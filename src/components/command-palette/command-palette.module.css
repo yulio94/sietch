@@ -1,0 +1,98 @@
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(30, 28, 23, 0.4);
+	backdrop-filter: blur(4px);
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding-top: 18vh;
+	z-index: 100;
+	animation: fadeIn 0.15s ease;
+}
+
+.palette {
+	width: 480px;
+	background: var(--sand-50);
+	border: 1px solid var(--sand-200);
+	border-radius: 12px;
+	box-shadow:
+		0 8px 32px rgba(30, 28, 23, 0.12),
+		0 2px 8px rgba(30, 28, 23, 0.08);
+	overflow: hidden;
+	animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.input {
+	width: 100%;
+	padding: 14px 16px;
+	border: none;
+	border-bottom: 1px solid var(--sand-200);
+	font-family: var(--font-ui);
+	font-size: 15px;
+	color: var(--sand-900);
+	background: transparent;
+	outline: none;
+}
+
+.input::placeholder {
+	color: var(--sand-400);
+}
+
+.results {
+	max-height: 280px;
+	overflow-y: auto;
+	padding: 4px;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 12px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background 0.1s;
+}
+
+.item:hover,
+.itemSelected {
+	background: var(--sand-200);
+}
+
+.itemSelected {
+	composes: item;
+}
+
+.itemLeft {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.category {
+	font-size: 10px;
+	color: var(--sand-400);
+	background: var(--sand-200);
+	padding: 2px 6px;
+	border-radius: 3px;
+}
+
+.label {
+	font-size: 13px;
+	color: var(--sand-800);
+}
+
+.shortcut {
+	font-family: var(--font-mono);
+	font-size: 10px;
+	color: var(--sand-400);
+}
+
+.shortcut kbd {
+	background: var(--sand-200);
+	padding: 2px 5px;
+	border-radius: 3px;
+	font-family: inherit;
+	margin-left: 2px;
+}

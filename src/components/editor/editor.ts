@@ -1,0 +1,131 @@
+import { Editor } from "@tiptap/core";
+import CharacterCount from "@tiptap/extension-character-count";
+import Placeholder from "@tiptap/extension-placeholder";
+import Typography from "@tiptap/extension-typography";
+import StarterKit from "@tiptap/starter-kit";
+import { bus } from "../../core/bus";
+import { store } from "../../core/store";
+import { getLL } from "../../i18n";
+import type { Doc, EditorStats, OutlineItem } from "../../types";
+import styles from "./editor.module.css";
+
+function computeStats(editor: Editor): EditorStats {
+	const LL = getLL();
+	const text = editor.getText();
+	const words = text.split(/\s+/).filter((w) => w.length > 0).length;
+	const characters = editor.storage.characterCount?.characters() ?? 0;
+	const paragraphs = editor.getJSON().content?.length ?? 0;
+	const minutes = Math.max(1, Math.ceil(words / 238));
+	return {
+		words,
+		characters,
+		paragraphs,
+		readingTime: LL.readingTime({ minutes }),
+	};
+}
+
+function computeOutline(editor: Editor): OutlineItem[] {
+	const items: OutlineItem[] = [];
+	const json = editor.getJSON();
+	if (!json.content) return items;
+
+	for (const node of json.content) {
+		if (node.type === "heading" && node.attrs?.level) {
+			const text =
+				node.content
+					?.map((c) => ("text" in c ? (c.text as string) : ""))
+					.join("") ?? "";
+			if (text.trim()) {
+				items.push({
+					id: `heading-${items.length}`,
+					text,
+					level: node.attrs.level as number,
+				});
+			}
+		}
+	}
+	return items;
+}
+
+export function createEditor(container: HTMLElement) {
+	const LL = getLL();
+
+	// Build DOM safely — no user content in the template
+	const area = document.createElement("div");
+	area.className = styles.editorArea;
+
+	const toolbar = document.createElement("div");
+	toolbar.className = styles.toolbar;
+	const toolbarTitle = document.createElement("span");
+	toolbarTitle.className = styles.toolbarTitle;
+	toolbar.appendChild(toolbarTitle);
+
+	const scroll = document.createElement("div");
+	scroll.className = styles.scroll;
+	const editorContent = document.createElement("div");
+	editorContent.className = styles.content;
+	scroll.appendChild(editorContent);
+
+	area.appendChild(toolbar);
+	area.appendChild(scroll);
+	container.appendChild(area);
+
+	const editor = new Editor({
+		element: editorContent,
+		extensions: [
+			StarterKit,
+			CharacterCount,
+			Placeholder.configure({ placeholder: LL.placeholder() }),
+			Typography,
+		],
+		content: "",
+		onUpdate: ({ editor: ed }) => {
+			store.set("stats", computeStats(ed));
+			store.set("outline", computeOutline(ed));
+		},
+		onFocus: () => {
+			if (store.get("focusMode")) {
+				editorContent.setAttribute("data-focused", "true");
+			}
+		},
+		onBlur: () => {
+			editorContent.removeAttribute("data-focused");
+		},
+	});
+
+	// Load document content
+	bus.on("document:load", (doc: Doc) => {
+		editor.commands.setContent(doc.content || "");
+		toolbarTitle.textContent = doc.title;
+		store.set("stats", computeStats(editor));
+		store.set("outline", computeOutline(editor));
+	});
+
+	// Scroll to heading from outline click
+	bus.on("editor:scroll-to", (item: OutlineItem) => {
+		const headings = editorContent.querySelectorAll("h1, h2, h3");
+		const idx = store.get("outline").findIndex((o) => o.id === item.id);
+		if (idx >= 0 && headings[idx]) {
+			headings[idx].scrollIntoView({ behavior: "smooth", block: "center" });
+		}
+	});
+
+	// Focus mode toggle
+	bus.on("focus:toggle", () => {
+		const focused = !store.get("focusMode");
+		store.set("focusMode", focused);
+		if (focused) {
+			editorContent.setAttribute("data-focused", "true");
+		} else {
+			editorContent.removeAttribute("data-focused");
+		}
+	});
+
+	store.on("focusMode", (focused) => {
+		if (focused && editor.isFocused) {
+			editorContent.setAttribute("data-focused", "true");
+		} else if (!focused) {
+			editorContent.removeAttribute("data-focused");
+		}
+	});
+}

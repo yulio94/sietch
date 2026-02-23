@@ -1,0 +1,71 @@
+export interface Doc {
+	id: string;
+	title: string;
+	content: string;
+	preview: string;
+	meta: string;
+	notes: string;
+	createdAt: Date;
+	updatedAt: Date;
+}
+
+export interface EditorStats {
+	words: number;
+	characters: number;
+	paragraphs: number;
+	readingTime: string;
+}
+
+export interface OutlineItem {
+	id: string;
+	text: string;
+	level: number;
+}
+
+export interface CommandItem {
+	id: string;
+	category: string;
+	label: string;
+	shortcut?: string;
+	action: () => void;
+}
+
+export interface StoreState {
+	documents: Doc[];
+	activeDoc: Doc | null;
+	stats: EditorStats;
+	outline: OutlineItem[];
+	theme: "light" | "dark";
+	sidebarOpen: boolean;
+	inspectorOpen: boolean;
+	focusMode: boolean;
+	dailyGoal: number;
+	locale: string;
+}
+
+export type ConfigKeys =
+	| "theme"
+	| "sidebarOpen"
+	| "inspectorOpen"
+	| "focusMode"
+	| "dailyGoal"
+	| "locale";
+
+export interface Config extends Pick<StoreState, ConfigKeys> {
+	sidebarWidth: number;
+	inspectorWidth: number;
+}
+
+export interface BusEvents {
+	"document:new": undefined;
+	"document:load": Doc;
+	"document:save": Doc;
+	"editor:scroll-to": OutlineItem;
+	"panel:toggle-sidebar": undefined;
+	"panel:toggle-inspector": undefined;
+	"palette:open": undefined;
+	"palette:close": undefined;
+	"theme:toggle": undefined;
+	"focus:toggle": undefined;
+	"locale:change": string;
+}

@@ -1,0 +1,95 @@
+.inspector {
+	background: var(--sand-50);
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 20px 16px;
+}
+
+.section {
+	margin-bottom: 24px;
+}
+
+.sectionTitle {
+	font-size: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--sand-400);
+	margin-bottom: 10px;
+}
+
+.statGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+}
+
+.statCard {
+	padding: 10px;
+	background: var(--sand-100);
+	border-radius: 8px;
+}
+
+.statValue {
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--sand-800);
+	font-variant-numeric: tabular-nums;
+	line-height: 1.2;
+}
+
+.statLabel {
+	font-size: 10px;
+	color: var(--sand-400);
+	margin-top: 2px;
+}
+
+.outlineList {
+	list-style: none;
+}
+
+.outlineItem {
+	padding: 5px 8px;
+	font-size: 12px;
+	color: var(--sand-600);
+	cursor: pointer;
+	border-radius: 4px;
+	transition: all 0.15s;
+}
+
+.outlineItem:hover {
+	background: var(--sand-200);
+	color: var(--sand-800);
+}
+
+.outlineItemIndent {
+	composes: outlineItem;
+	padding-left: 20px;
+	font-size: 11px;
+}
+
+.notesInput {
+	width: 100%;
+	min-height: 100px;
+	padding: 10px;
+	background: var(--sand-100);
+	border: 1px solid transparent;
+	border-radius: 8px;
+	font-family: var(--font-ui);
+	font-size: 12px;
+	color: var(--sand-700);
+	resize: vertical;
+	outline: none;
+	line-height: 1.6;
+	transition: border-color 0.2s;
+}
+
+.notesInput:focus {
+	border-color: var(--sand-300);
+}
+
+.notesInput::placeholder {
+	color: var(--sand-400);
+}

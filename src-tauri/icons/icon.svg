@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="h-cresta" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C2703E" stop-opacity="0.4"/>
+      <stop offset="40%" stop-color="#C2703E"/>
+      <stop offset="60%" stop-color="#D4884E"/>
+      <stop offset="100%" stop-color="#C2703E" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="200" height="200" rx="40" fill="#0F0F1A"/>
+  
+  <path d="M20 88 Q68 64 118 78 Q158 88 182 72" 
+        fill="none" stroke="#C2703E" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+  
+  <path d="M16 102 Q62 76 114 92 Q156 106 184 88" 
+        fill="none" stroke="#C2703E" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+  
+  <!-- Duna principal -->
+  <path d="M12 118 Q54 86 108 106 Q152 122 190 102" 
+        fill="none" stroke="url(#h-cresta)" stroke-width="3.5" stroke-linecap="round"/>
+  
+  <!-- Resplandor azul sutil en la cresta -->
+  <path d="M50 100 Q80 90 108 98 Q135 106 160 100" 
+        fill="none" stroke="#2E86AB" stroke-width="1.5" opacity="0.18" stroke-linecap="round"/>
+  
+  <path d="M15 136 Q58 120 108 130 Q154 140 186 124" 
+        fill="none" stroke="#C2703E" stroke-width="1.8" opacity="0.2" stroke-linecap="round"/>
+  
+  <path d="M20 150 Q62 140 110 146 Q154 152 182 140" 
+        fill="none" stroke="#C2703E" stroke-width="1" opacity="0.08" stroke-linecap="round"/>
+  
+  <!-- Partículas de especia flotando -->
+  <circle cx="88" cy="78" r="1.8" fill="#2E86AB" opacity="0.3"/>
+  <circle cx="120" cy="72" r="1.2" fill="#2E86AB" opacity="0.22"/>
+  <circle cx="105" cy="68" r="1.5" fill="#C2703E" opacity="0.2"/>
+  <circle cx="75" cy="72" r="1" fill="#2E86AB" opacity="0.15"/>
+  <circle cx="135" cy="80" r="0.8" fill="#C2703E" opacity="0.15"/>
+</svg>
