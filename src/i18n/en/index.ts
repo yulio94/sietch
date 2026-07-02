@@ -4,7 +4,7 @@ const en = {
 	// Sidebar
 	library: "Library",
 	newDocument: "+",
-	projectTitle: "Children of Dune",
+	projectTitle: "Untitled Project",
 
 	// Editor
 	placeholder: "Begin writing...",

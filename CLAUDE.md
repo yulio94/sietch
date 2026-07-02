@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Sietch is a Tauri v2 desktop writing editor using vanilla TypeScript for the frontend and Rust for the backend. It uses TipTap v3 as a rich text editor with a Dune-themed design system (sand palette, spice accents).
+Sietch is a Tauri v2 desktop writing editor using vanilla TypeScript for the frontend and Rust for the backend. It uses TipTap v3 as a rich text editor with a warm sand/stone design system.
 
 ## Commands
 
@@ -104,7 +104,7 @@ export function createComponentName(container: HTMLElement) {
 
 ### CSS Strategy
 
-- **`theme.css`** — Design tokens (sand palette, spice/water accents), CSS reset, shared components (`.btn-icon`, `.divider`), animations.
+- **`theme.css`** — Design tokens (sand palette, accent colors), CSS reset, shared components (`.btn-icon`, `.divider`), animations.
 - **`styles.css`** — Only the `.app` grid layout rules.
 - **CSS Modules** — Each component has its own `.module.css` file. Vite hashes class names automatically. `localsConvention: "camelCaseOnly"` in vite.config.ts.
 

@@ -21,6 +21,6 @@
 }
 
 .button:hover {
-	border-color: var(--spice);
-	color: var(--spice);
+	border-color: var(--accent);
+	color: var(--accent);
 }

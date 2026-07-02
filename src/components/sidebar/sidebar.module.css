@@ -63,7 +63,7 @@
 	transform: translateY(-50%);
 	width: 2px;
 	height: 16px;
-	background: var(--spice);
+	background: var(--accent);
 	border-radius: 1px;
 }
 
