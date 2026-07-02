@@ -110,6 +110,7 @@ export function createComponentName(container: HTMLElement) {
 
 ## Coding Conventions
 
+- **Language**: All code, comments, doc comments, error messages, variable names, and commit messages must be written in **English**, regardless of the language of the prompt. The only exception is i18n locale files (e.g., `src/i18n/es/index.ts`), which contain translations in their respective languages.
 - **Formatter**: Biome with tab indentation and double quotes.
 - **TypeScript**: Strict mode with `noUnusedLocals` and `noUnusedParameters`. Target ES2020.
 - **DOM construction**: Use `document.createElement` for safe DOM building. Avoid `innerHTML` with user/dynamic content.

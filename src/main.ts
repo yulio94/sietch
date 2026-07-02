@@ -2,6 +2,7 @@ import { createCommandPalette } from "./components/command-palette/command-palet
 import { createEditor } from "./components/editor/editor";
 import { createInspector } from "./components/inspector/inspector";
 import { createSidebar } from "./components/sidebar/sidebar";
+import { createStartScreen } from "./components/start-screen/start-screen";
 import { createStatusbar } from "./components/statusbar/statusbar";
 import { createThemeToggle } from "./components/theme-toggle/theme-toggle";
 import { bus } from "./core/bus";
@@ -93,31 +94,20 @@ async function detectSystemLocale(): Promise<string> {
 	return navigator.language;
 }
 
-async function bootstrap() {
-	const root = document.getElementById("app");
-	if (!root) return;
-
-	// Detect locale and init i18n before mounting any component
-	const bcp47 = await detectSystemLocale();
-	const systemLocale = resolveLocale(bcp47);
-	initI18n(systemLocale);
-
-	// Load persisted config (populates the reactive store)
-	const config = await loadConfig();
-
-	// If persisted locale differs from system locale, re-init i18n
-	const appLocale = resolveLocale(config.locale);
-	if (appLocale !== systemLocale) {
-		initI18n(appLocale);
-	}
-	document.documentElement.lang = appLocale;
-
+function mountEditorLayout(
+	root: HTMLElement,
+	config: Awaited<ReturnType<typeof loadConfig>>,
+) {
 	const LL = getLL();
-
 	const app = buildLayout();
+
+	// Clear the start screen safely using DOM API
+	while (root.firstChild) {
+		root.removeChild(root.firstChild);
+	}
 	root.appendChild(app);
 
-	// Mount components into slots — elements exist because buildLayout() just created them
+	// Mount components into slots
 	const sidebarEl = app.querySelector("#slot-sidebar") as HTMLElement;
 	const editorEl = app.querySelector("#slot-editor") as HTMLElement;
 	const inspectorEl = app.querySelector("#slot-inspector") as HTMLElement;
@@ -126,7 +116,6 @@ async function bootstrap() {
 	createInspector(inspectorEl);
 	createStatusbar(editorEl);
 	createCommandPalette();
-	createThemeToggle();
 
 	// Init services
 	initShortcuts();
@@ -154,6 +143,36 @@ async function bootstrap() {
 		store.set("documents", [newDoc, ...allDocs]);
 		store.set("activeDoc", newDoc);
 		bus.emit("document:load", newDoc);
+	});
+}
+
+async function bootstrap() {
+	const root = document.getElementById("app");
+	if (!root) return;
+
+	// Detect locale and init i18n before mounting any component
+	const bcp47 = await detectSystemLocale();
+	const systemLocale = resolveLocale(bcp47);
+	initI18n(systemLocale);
+
+	// Load persisted config (populates the reactive store)
+	const config = await loadConfig();
+
+	// If persisted locale differs from system locale, re-init i18n
+	const appLocale = resolveLocale(config.locale);
+	if (appLocale !== systemLocale) {
+		initI18n(appLocale);
+	}
+	document.documentElement.lang = appLocale;
+
+	// Theme toggle lives on document.body — visible on all screens
+	createThemeToggle();
+
+	// Show start screen — editor mounts only after a project is loaded
+	createStartScreen(root);
+
+	bus.on("project:loaded", () => {
+		mountEditorLayout(root, config);
 	});
 }
 

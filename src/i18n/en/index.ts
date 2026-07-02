@@ -40,6 +40,17 @@ const en = {
 
 	// Theme toggle
 	toggleThemeLabel: "Toggle theme",
+
+	// Start screen
+	welcomeTitle: "Welcome to Sietch",
+	welcomeSubtitle: "Your desert writing refuge",
+	createProject: "Create Project",
+	openProject: "Open Project",
+	projectNameLabel: "Project name",
+	projectNamePlaceholder: "My Novel",
+	create: "Create",
+	cancel: "Cancel",
+	errorNotProject: "This folder is not a Sietch project",
 } satisfies BaseTranslation;
 
 export default en;

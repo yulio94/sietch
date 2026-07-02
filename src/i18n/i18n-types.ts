@@ -132,6 +132,42 @@ type RootTranslation = {
 	 * T​o​g​g​l​e​ ​t​h​e​m​e
 	 */
 	toggleThemeLabel: string
+	/**
+	 * W​e​l​c​o​m​e​ ​t​o​ ​S​i​e​t​c​h
+	 */
+	welcomeTitle: string
+	/**
+	 * Y​o​u​r​ ​d​e​s​e​r​t​ ​w​r​i​t​i​n​g​ ​r​e​f​u​g​e
+	 */
+	welcomeSubtitle: string
+	/**
+	 * C​r​e​a​t​e​ ​P​r​o​j​e​c​t
+	 */
+	createProject: string
+	/**
+	 * O​p​e​n​ ​P​r​o​j​e​c​t
+	 */
+	openProject: string
+	/**
+	 * P​r​o​j​e​c​t​ ​n​a​m​e
+	 */
+	projectNameLabel: string
+	/**
+	 * M​y​ ​N​o​v​e​l
+	 */
+	projectNamePlaceholder: string
+	/**
+	 * C​r​e​a​t​e
+	 */
+	create: string
+	/**
+	 * C​a​n​c​e​l
+	 */
+	cancel: string
+	/**
+	 * T​h​i​s​ ​f​o​l​d​e​r​ ​i​s​ ​n​o​t​ ​a​ ​S​i​e​t​c​h​ ​p​r​o​j​e​c​t
+	 */
+	errorNotProject: string
 }
 
 export type TranslationFunctions = {
@@ -247,6 +283,42 @@ export type TranslationFunctions = {
 	 * Toggle theme
 	 */
 	toggleThemeLabel: () => LocalizedString
+	/**
+	 * Welcome to Sietch
+	 */
+	welcomeTitle: () => LocalizedString
+	/**
+	 * Your desert writing refuge
+	 */
+	welcomeSubtitle: () => LocalizedString
+	/**
+	 * Create Project
+	 */
+	createProject: () => LocalizedString
+	/**
+	 * Open Project
+	 */
+	openProject: () => LocalizedString
+	/**
+	 * Project name
+	 */
+	projectNameLabel: () => LocalizedString
+	/**
+	 * My Novel
+	 */
+	projectNamePlaceholder: () => LocalizedString
+	/**
+	 * Create
+	 */
+	create: () => LocalizedString
+	/**
+	 * Cancel
+	 */
+	cancel: () => LocalizedString
+	/**
+	 * This folder is not a Sietch project
+	 */
+	errorNotProject: () => LocalizedString
 }
 
 export type Formatters = {}

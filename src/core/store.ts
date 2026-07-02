@@ -13,6 +13,8 @@ const defaultState: StoreState = {
 	focusMode: false,
 	dailyGoal: 1000,
 	locale: "en",
+	projectMeta: null,
+	projectPath: null,
 };
 
 class Store {

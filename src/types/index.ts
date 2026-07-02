@@ -1,3 +1,12 @@
+export interface ProjectMeta {
+	name: string;
+	author: string;
+	created: string;
+	modified: string;
+	version: string;
+	chapter_order: string[];
+}
+
 export interface Doc {
 	id: string;
 	title: string;
@@ -41,6 +50,8 @@ export interface StoreState {
 	focusMode: boolean;
 	dailyGoal: number;
 	locale: string;
+	projectMeta: ProjectMeta | null;
+	projectPath: string | null;
 }
 
 export type ConfigKeys =
@@ -68,4 +79,6 @@ export interface BusEvents {
 	"theme:toggle": undefined;
 	"focus:toggle": undefined;
 	"locale:change": string;
+	"project:loaded": ProjectMeta;
+	"project:closed": undefined;
 }

@@ -40,6 +40,17 @@ const es = {
 
 	// Theme toggle
 	toggleThemeLabel: "Alternar tema",
+
+	// Start screen
+	welcomeTitle: "Bienvenido a Sietch",
+	welcomeSubtitle: "Tu refugio de escritura en el desierto",
+	createProject: "Crear proyecto",
+	openProject: "Abrir proyecto",
+	projectNameLabel: "Nombre del proyecto",
+	projectNamePlaceholder: "Mi Novela",
+	create: "Crear",
+	cancel: "Cancelar",
+	errorNotProject: "Esta carpeta no es un proyecto de Sietch",
 } satisfies Translation;
 
 export default es;
