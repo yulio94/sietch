@@ -14,7 +14,7 @@
 	font-family: var(--font-display);
 	font-size: 48px;
 	font-weight: 700;
-	color: var(--spice);
+	color: var(--accent);
 	margin-bottom: 8px;
 	letter-spacing: -0.02em;
 }
@@ -45,21 +45,21 @@
 }
 
 .btn:hover {
-	border-color: var(--spice);
-	color: var(--spice);
+	border-color: var(--accent);
+	color: var(--accent);
 	background: var(--sand-100);
 }
 
 .btnPrimary {
 	composes: btn;
-	background: var(--spice);
-	border-color: var(--spice);
+	background: var(--accent);
+	border-color: var(--accent);
 	color: var(--sand-50);
 }
 
 .btnPrimary:hover {
-	background: var(--spice-glow);
-	border-color: var(--spice-glow);
+	background: var(--accent-glow);
+	border-color: var(--accent-glow);
 	color: var(--sand-50);
 }
 
@@ -116,7 +116,7 @@
 }
 
 .input:focus {
-	border-color: var(--spice);
+	border-color: var(--accent);
 }
 
 .modalActions {

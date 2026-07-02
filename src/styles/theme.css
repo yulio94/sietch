@@ -14,7 +14,7 @@
 
 /* ── Light Theme Tokens (default) ─────────────────────── */
 :root {
-	/* Sand & Stone palette — Arrakis inspired */
+	/* Sand & Stone palette */
 	--sand-50: #fefdfb;
 	--sand-100: #faf8f4;
 	--sand-200: #f0ece4;
@@ -27,8 +27,8 @@
 	--sand-900: #1e1c17;
 
 	/* Accent colors */
-	--spice: #c17817;
-	--spice-glow: #e8a84c;
+	--accent: #c17817;
+	--accent-glow: #e8a84c;
 	--water: #4a8fa8;
 
 	/* Typography */
@@ -49,7 +49,7 @@
 	--sand-700: #c4bba8;
 	--sand-800: #e2dcd0;
 	--sand-900: #faf8f4;
-	--spice: #e8a84c;
+	--accent: #e8a84c;
 }
 
 /* ── Base ─────────────────────────────────────────────── */
@@ -132,7 +132,7 @@ body {
 }
 
 .divider:hover {
-	background: var(--spice);
+	background: var(--accent);
 }
 
 /* Active resize state — disables transition so split-grid drag is instant */
@@ -141,7 +141,7 @@ body {
 }
 
 .app.is-resizing .divider {
-	background: var(--spice);
+	background: var(--accent);
 }
 
 /* ── Animations ───────────────────────────────────────── */

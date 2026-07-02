@@ -79,7 +79,7 @@
 }
 
 .content blockquote {
-	border-left: 2px solid var(--spice);
+	border-left: 2px solid var(--accent);
 	padding-left: 20px;
 	margin: 24px 0;
 }

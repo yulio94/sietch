@@ -49,10 +49,10 @@ function seedDemoData(): Doc[] {
 	return [
 		{
 			id: "1",
-			title: "The Spice Must Flow",
+			title: "Chapter One",
 			content:
-				"<h1>The Spice Must Flow</h1><p>The spice melange is the most essential and valuable commodity in the universe. Found only on the desert planet Arrakis, it grants extended life, expanded consciousness, and is vital to space travel.</p><h2>Properties of Melange</h2><p>The spice has geriatric properties that extend human life. Guild Navigators use it to fold space, enabling interstellar travel without computers. The Bene Gesserit use it to unlock genetic memory.</p><p>He who controls the spice controls the universe.</p>",
-			preview: "The spice melange is the most essential...",
+				"<h1>Chapter One</h1><p>Start writing here. This is a sample chapter to show how the editor renders headings, paragraphs, and formatting.</p><h2>A section</h2><p>Use headings to structure your manuscript. The outline panel picks them up automatically.</p>",
+			preview: "Start writing here. This is a sample chapter...",
 			meta: LL.justNow(),
 			notes: "",
 			createdAt: new Date(),
@@ -60,21 +60,21 @@ function seedDemoData(): Doc[] {
 		},
 		{
 			id: "2",
-			title: "Arrakis — Desert Planet",
+			title: "Chapter Two",
 			content:
-				"<h1>Arrakis — Desert Planet</h1><p>Arrakis, also known as Dune, is the third planet orbiting the star Canopus. It is a harsh, arid world with virtually no rainfall, yet it holds the key to human civilization.</p><h2>The Sandworms</h2><p>Shai-Hulud, the great sandworms of Arrakis, are the source of the spice. They are territorial creatures of immense size, some exceeding 400 meters in length.</p>",
-			preview: "Arrakis, also known as Dune...",
+				"<h1>Chapter Two</h1><p>Another sample chapter. Replace this text with your own writing.</p><h2>Notes</h2><p>Each document keeps its own notes and word count.</p>",
+			preview: "Another sample chapter. Replace this text...",
 			meta: "2 hours ago",
-			notes: "Research Fremen water discipline",
+			notes: "Sample note",
 			createdAt: new Date(),
 			updatedAt: new Date(),
 		},
 		{
 			id: "3",
-			title: "The Fremen Way",
+			title: "Chapter Three",
 			content:
-				"<h1>The Fremen Way</h1><p>The Fremen are the native people of Arrakis. Their entire culture revolves around the conservation of water, which they consider sacred.</p><p>A sietch is the name for a Fremen community, typically hidden in the rocky formations of the desert.</p>",
-			preview: "The Fremen are the native people...",
+				"<h1>Chapter Three</h1><p>A third sample chapter so the sidebar has a few entries to display.</p>",
+			preview: "A third sample chapter...",
 			meta: "Yesterday",
 			notes: "",
 			createdAt: new Date(),

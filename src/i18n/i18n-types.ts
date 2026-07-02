@@ -180,7 +180,7 @@ export type TranslationFunctions = {
 	 */
 	newDocument: () => LocalizedString
 	/**
-	 * Children of Dune
+	 * Untitled Project
 	 */
 	projectTitle: () => LocalizedString
 	/**
