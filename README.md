@@ -1,7 +1,17 @@
-# Tauri + Vanilla TS
+# Sietch
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Typescript.
+> *"The spice must flow."*
 
-## Recommended IDE Setup
+Open-source writing app for long-form manuscripts.
+A modern alternative to Scrivener and Ulysses, with portable data and no vendor lock-in.
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Stack
+- Tauri 2.0 + Vanilla JS + TipTap (frontend)
+- Rust (backend)
+- Project format: folders with `.md` files + metadata in `sietch.json`
+
+## Status
+Phase 1 — "The Spice Must Flow" (MVP in progress). See `FEATURES.md`.
+
+## License
+AGPL-3.0 — see `LICENSE`.
